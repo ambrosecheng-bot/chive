@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>韭菜俱樂部 · 2026 年度同行之書</title>
+<meta name="description" content="韭菜俱樂部 2026 年度發展計劃 — 互相支援、分享成果、關懷社群。種植不只發生在泥土裡,也發生在人與人之間。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --soil:#2C1A0F;          /* 深泥棕 */
+    --soil-2:#4A2C17;        /* 深棕 */
+    --bark:#6B4A30;          /* 樹皮 */
+    --cream:#F5EDD6;         /* 米白 */
+    --cream-warm:#EFE3C6;
+    --grass:#7A9E5A;         /* 草綠 */
+    --grass-deep:#5A7B3E;
+    --orange:#E8722A;        /* 暖橙 */
+    --orange-soft:#F0A45E;
+    --ink:#241710;
+    --muted:#8A7860;
+    --line:rgba(74,44,23,.16);
+    --serif:'Noto Serif TC',serif;
+    --sans:'Noto Sans TC',sans-serif;
+    --maxw:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .serif{font-family:var(--serif)}
+
+  /* ===== Growth axis : the signature element ===== */
+  .axis{
+    position:fixed;left:max(28px,calc((100vw - var(--maxw))/2 + 6px));top:0;bottom:0;
+    width:2px;z-index:40;pointer-events:none;
+  }
+  .axis-track{position:absolute;top:0;bottom:0;left:0;width:2px;background:var(--line)}
+  .axis-grow{position:absolute;top:0;left:0;width:2px;height:0;
+    background:linear-gradient(var(--grass),var(--grass-deep));transition:height .15s linear}
+  .axis-seed{position:fixed;left:max(22px,calc((100vw - var(--maxw))/2));top:0;
+    width:14px;height:14px;border-radius:50%;background:var(--orange);
+    box-shadow:0 0 0 4px rgba(232,114,42,.18);z-index:41;transition:top .15s linear;transform:translateY(-7px)}
+  @media(max-width:880px){.axis,.axis-seed{display:none}}
+
+  /* ===== top nav ===== */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+    background:rgba(245,237,214,0);transition:background .4s,box-shadow .4s,padding .4s;
+  }
+  header.nav.solid{background:rgba(245,237,214,.94);backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 var(--line);padding:12px 28px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);
+    font-weight:700;font-size:1.15rem;color:var(--soil-2);letter-spacing:.02em}
+  .brand .leaf{width:26px;height:26px;flex:none}
+  .navlinks{display:flex;gap:26px;font-size:.86rem;font-weight:500}
+  .navlinks a{color:var(--soil-2);text-decoration:none;opacity:.78;transition:opacity .2s}
+  .navlinks a:hover{opacity:1}
+  @media(max-width:880px){.navlinks{display:none}}
+
+  /* ===== hero ===== */
+  .hero{position:relative;min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+  .hero-img{position:relative;overflow:hidden}
+  .hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;
+    transform:scale(1.06);animation:slowzoom 18s ease-out forwards}
+  @keyframes slowzoom{to{transform:scale(1)}}
+  .hero-img::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(105deg,rgba(44,26,15,.12),rgba(245,237,214,.0) 55%,var(--cream) 99%)}
+  .hero-text{display:flex;flex-direction:column;justify-content:center;padding:0 7% 0 6%;
+    background:var(--cream)}
+  .eyebrow{font-size:.8rem;letter-spacing:.34em;color:var(--grass-deep);font-weight:700;
+    text-transform:uppercase;margin-bottom:22px}
+  .hero-text h1{font-family:var(--serif);font-weight:900;color:var(--soil-2);
+    font-size:clamp(2.4rem,5vw,3.6rem);line-height:1.18;letter-spacing:.01em}
+  .hero-text h1 .year{color:var(--orange)}
+  .hero-sub{margin-top:6px;font-family:var(--serif);font-size:clamp(1rem,1.6vw,1.25rem);
+    color:var(--bark);font-weight:500}
+  .hero-quote{margin-top:34px;padding-left:22px;border-left:3px solid var(--grass);
+    font-size:1.02rem;color:var(--soil);max-width:30em}
+  .hero-quote b{color:var(--orange);font-weight:700}
+  .hero-meta{margin-top:40px;display:flex;gap:30px;flex-wrap:wrap;font-size:.82rem;color:var(--muted)}
+  .hero-meta div span{display:block;font-family:var(--serif);font-size:1.4rem;color:var(--soil-2);font-weight:700}
+  @media(max-width:880px){
+    .hero{grid-template-columns:1fr;min-height:auto}
+    .hero-img{height:46vh}.hero-img::after{background:linear-gradient(0deg,var(--cream),rgba(245,237,214,0) 60%)}
+    .hero-text{padding:46px 26px 56px}
+  }
+
+  /* ===== section scaffolding ===== */
+  section{padding:108px 0;position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:14px}
+  .sec-num{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--orange);
+    letter-spacing:.05em;flex:none;line-height:1.2;align-self:flex-start}
+  .sec-title{font-family:var(--serif);font-weight:700;color:var(--soil-2);
+    font-size:clamp(1.7rem,3.3vw,2.5rem);line-height:1.25}
+  .sec-lead{font-size:1.05rem;color:var(--bark);max-width:46em;margin-bottom:52px}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== purpose : three pillars over photo ===== */
+  .purpose{background:var(--cream-warm)}
+  .purpose-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:54px;align-items:center}
+  .purpose-photo{border-radius:6px;overflow:hidden;box-shadow:0 24px 60px -28px rgba(44,26,15,.5);
+    aspect-ratio:4/5}
+  .purpose-photo img{width:100%;height:100%;object-fit:cover}
+  .pillars{display:flex;flex-direction:column;gap:18px}
+  .pillar{background:var(--cream);border:1px solid var(--line);border-left:4px solid var(--grass);
+    border-radius:4px;padding:24px 28px;transition:transform .3s,box-shadow .3s}
+  .pillar:hover{transform:translateX(6px);box-shadow:0 14px 34px -22px rgba(44,26,15,.45)}
+  .pillar h3{font-family:var(--serif);font-size:1.3rem;color:var(--soil-2);margin-bottom:6px;font-weight:700}
+  .pillar p{color:var(--bark);font-size:.97rem}
+  .pillar:nth-child(2){border-left-color:var(--orange)}
+  .pillar:nth-child(3){border-left-color:var(--bark)}
+  @media(max-width:880px){.purpose-grid{grid-template-columns:1fr;gap:32px}}
+
+  /* ===== three axes (主軸) ===== */
+  .axes{background:var(--soil);color:var(--cream)}
+  .axes .sec-title{color:var(--cream)}
+  .axes .sec-lead{color:rgba(245,237,214,.74)}
+  .axes .sec-num{color:var(--orange-soft)}
+  .axis-card{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:30px;
+    border-radius:8px;overflow:hidden;background:rgba(245,237,214,.04);
+    border:1px solid rgba(245,237,214,.1)}
+  .axis-card:nth-child(even){grid-template-columns:1fr 1fr}
+  .axis-card .ac-img{overflow:hidden;min-height:340px}
+  .axis-card .ac-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+  .axis-card:hover .ac-img img{transform:scale(1.05)}
+  .axis-card .ac-body{padding:46px 44px;display:flex;flex-direction:column;justify-content:center}
+  .axis-card.flip .ac-img{order:2}
+  .ac-tag{font-size:.74rem;letter-spacing:.3em;color:var(--orange-soft);font-weight:700;
+    text-transform:uppercase;margin-bottom:14px}
+  .ac-body h3{font-family:var(--serif);font-size:clamp(1.5rem,2.6vw,2rem);color:var(--cream);
+    margin-bottom:8px;font-weight:700}
+  .ac-spirit{color:var(--grass);font-family:var(--serif);font-size:1.05rem;margin-bottom:20px}
+  .ac-body p,.ac-body li{color:rgba(245,237,214,.82);font-size:.97rem}
+  .ac-body ul{list-style:none;margin-top:8px}
+  .ac-body li{padding-left:20px;position:relative;margin-bottom:7px}
+  .ac-body li::before{content:"";position:absolute;left:0;top:.7em;width:7px;height:7px;
+    border-radius:50%;background:var(--grass)}
+  .ac-outcome{margin-top:22px;padding-top:18px;border-top:1px solid rgba(245,237,214,.14);
+    font-size:.9rem;color:rgba(245,237,214,.7)}
+  .ac-outcome b{color:var(--orange-soft)}
+  /* farm to table trio */
+  .f2t{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:6px}
+  .f2t .card{background:rgba(245,237,214,.05);border:1px solid rgba(245,237,214,.1);
+    border-radius:8px;overflow:hidden}
+  .f2t .card img{width:100%;aspect-ratio:3/2;object-fit:cover}
+  .f2t .card .t{padding:20px 22px 26px}
+  .f2t .card h4{font-family:var(--serif);color:var(--cream);font-size:1.2rem;margin-bottom:6px;font-weight:600}
+  .f2t .card p{color:rgba(245,237,214,.78);font-size:.92rem}
+  @media(max-width:880px){
+    .axis-card,.axis-card.flip{grid-template-columns:1fr}
+    .axis-card.flip .ac-img{order:0}
+    .axis-card .ac-img{min-height:240px}
+    .axis-card .ac-body{padding:34px 28px}
+    .f2t{grid-template-columns:1fr}
+  }
+
+  /* ===== giving back ===== */
+  .give-banner{height:46vh;min-height:300px;overflow:hidden;position:relative}
+  .give-banner img{width:100%;height:100%;object-fit:cover;object-position:center 35%}
+  .give-banner::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(0deg,var(--cream) 2%,rgba(245,237,214,.1) 40%,transparent)}
+  .give-body{background:var(--cream);padding-top:64px}
+  .give-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;
+    border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .give-step{padding:34px 30px;border-right:1px solid var(--line);position:relative}
+  .give-step:last-child{border-right:none}
+  .give-step .gi{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(232,114,42,.12);color:var(--orange);margin-bottom:16px}
+  .give-step h4{font-family:var(--serif);font-size:1.25rem;color:var(--soil-2);margin-bottom:8px;font-weight:700}
+  .give-step p{color:var(--bark);font-size:.95rem}
+  .core-note{margin-top:30px;background:var(--soil-2);color:var(--cream);border-radius:10px;
+    padding:26px 32px;font-size:1.02rem;display:flex;gap:16px;align-items:flex-start}
+  .core-note .lbl{font-family:var(--serif);color:var(--orange-soft);font-weight:700;flex:none}
+  @media(max-width:880px){.give-flow{grid-template-columns:1fr}.give-step{border-right:none;border-bottom:1px solid var(--line)}}
+
+  /* ===== principles ===== */
+  .principles{background:var(--cream-warm)}
+  .prin-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+  .prin-photo{border-radius:6px;overflow:hidden;aspect-ratio:3/4;
+    box-shadow:0 24px 60px -28px rgba(44,26,15,.5)}
+  .prin-photo img{width:100%;height:100%;object-fit:cover}
+  .prin-list{display:flex;flex-direction:column;gap:0}
+  .prin{padding:26px 0;border-bottom:1px solid var(--line);display:flex;gap:22px;align-items:flex-start}
+  .prin:last-child{border-bottom:none}
+  .prin .pn{font-family:var(--serif);font-weight:900;font-size:1.5rem;color:var(--grass-deep);
+    flex:none;line-height:1;width:2ch}
+  .prin h4{font-family:var(--serif);font-size:1.3rem;color:var(--soil-2);margin-bottom:6px;font-weight:700}
+  .prin p{color:var(--bark);font-size:.97rem}
+  @media(max-width:880px){.prin-grid{grid-template-columns:1fr;gap:34px}}
+
+  /* ===== seasons ===== */
+  .seasons .sec-lead{margin-bottom:40px}
+  .season-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .season{background:var(--cream-warm);border:1px solid var(--line);border-radius:10px;
+    overflow:hidden;display:flex;flex-direction:column;transition:transform .35s,box-shadow .35s}
+  .season:hover{transform:translateY(-6px);box-shadow:0 22px 44px -26px rgba(44,26,15,.5)}
+  .season .s-img{aspect-ratio:1/1;overflow:hidden}
+  .season .s-img img{width:100%;height:100%;object-fit:cover}
+  .season .s-body{padding:22px 22px 26px;flex:1;display:flex;flex-direction:column}
+  .season .s-tag{font-size:.74rem;letter-spacing:.18em;font-weight:700;margin-bottom:8px}
+  .season:nth-child(1) .s-tag{color:#C76B8E}
+  .season:nth-child(2) .s-tag{color:var(--orange)}
+  .season:nth-child(3) .s-tag{color:#B9742E}
+  .season:nth-child(4) .s-tag{color:#5E83A8}
+  .season h4{font-family:var(--serif);font-size:1.2rem;color:var(--soil-2);margin-bottom:12px;font-weight:700}
+  .season ul{list-style:none;font-size:.9rem;color:var(--bark);flex:1}
+  .season li{padding-left:16px;position:relative;margin-bottom:7px}
+  .season li::before{content:"";position:absolute;left:0;top:.65em;width:5px;height:5px;border-radius:50%;background:var(--grass)}
+  .season li b{color:var(--soil-2);font-weight:600}
+  .season .s-foot{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);
+    font-size:.82rem;color:var(--muted)}
+  .flex-note{margin-top:30px;background:var(--cream);border:1px dashed var(--grass);border-radius:10px;
+    padding:22px 28px;font-size:.96rem;color:var(--bark);display:flex;gap:14px;align-items:flex-start}
+  .flex-note .lbl{color:var(--grass-deep);font-weight:700;flex:none}
+  @media(max-width:1080px){.season-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.season-grid{grid-template-columns:1fr}}
+
+  /* ===== vision / closing ===== */
+  .vision{position:relative;color:var(--cream);text-align:center;padding:0}
+  .vision-bg{position:absolute;inset:0;overflow:hidden}
+  .vision-bg img{width:100%;height:100%;object-fit:cover}
+  .vision-bg::after{content:"";position:absolute;inset:0;background:rgba(44,26,15,.72)}
+  .vision-inner{position:relative;z-index:2;padding:120px 28px}
+  .vision .eyebrow{color:var(--orange-soft)}
+  .vision blockquote{font-family:var(--serif);font-weight:900;
+    font-size:clamp(2rem,5.2vw,3.6rem);line-height:1.32;color:var(--cream);
+    max-width:18em;margin:24px auto 0;letter-spacing:.01em}
+  .vision blockquote .hl{color:var(--orange-soft)}
+  .vision .v-body{max-width:40em;margin:40px auto 0;color:rgba(245,237,214,.86);font-size:1.05rem}
+  .vision .v-call{margin-top:30px;font-family:var(--serif);font-size:1.2rem;color:var(--cream)}
+  .verse{margin-top:46px;font-size:.92rem;color:rgba(245,237,214,.7);font-style:italic;letter-spacing:.02em}
+
+  /* ===== footer ===== */
+  footer{background:var(--soil);color:rgba(245,237,214,.7);padding:50px 0;text-align:center;font-size:.86rem}
+  footer .brand{justify-content:center;color:var(--cream);margin-bottom:14px}
+  footer a{color:var(--orange-soft);text-decoration:none}
+  footer .small{margin-top:10px;font-size:.78rem;color:rgba(245,237,214,.45)}
+
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- growth axis signature -->
+<div class="axis"><div class="axis-track"></div><div class="axis-grow" id="axisGrow"></div></div>
+<div class="axis-seed" id="axisSeed"></div>
+
+<header class="nav" id="nav">
+  <div class="brand">
+    <svg class="leaf" viewBox="0 0 24 24" fill="none"><path d="M4 20c0-8 6-13 16-14-1 9-6 14-14 14H4z" fill="#7A9E5A"/><path d="M5 19C9 14 12 11 17 8" stroke="#4A2C17" stroke-width="1.3" stroke-linecap="round"/></svg>
+    韭菜俱樂部
+  </div>
+  <nav class="navlinks">
+    <a href="#purpose">年度宗旨</a>
+    <a href="#axes">三大主軸</a>
+    <a href="#give">社群外展</a>
+    <a href="#principles">運作原則</a>
+    <a href="#seasons">四季行動</a>
+    <a href="#vision">願景</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-img"><img src="images/hero_garden.jpg" alt="後院社群共耕,長幼一起在菜畦間勞作"></div>
+  <div class="hero-text">
+    <div class="eyebrow">2026 年度發展計劃 · 草案</div>
+    <h1>承接共耕同行<br>走向<span class="year">2026</span></h1>
+    <div class="hero-sub">由嘗試,走向更有意識、更成熟同行的一年</div>
+    <p class="hero-quote">「2026 年,我們承接 2025 年已開始的共耕同行,透過彼此<b>支援</b>、<b>分享</b>學習、共享成果,學習由嘗試,走向更有意識、更成熟同行的一年。」</p>
+    <div class="hero-meta">
+      <div><span>3</span>大發展主軸</div>
+      <div><span>4</span>季實踐行動</div>
+      <div><span>1</span>個生活共同體</div>
+    </div>
+  </div>
+</section>
+
+<!-- PURPOSE -->
+<section class="purpose" id="purpose">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">二</span><h2 class="sec-title">年度宗旨 · Purpose</h2></div>
+    <p class="sec-lead reveal">透過後院種植,建立一個互相支援、分享成果、關懷社群的生活共同體 —— 讓種植不只發生在泥土裡,也發生在人與人之間。</p>
+    <div class="purpose-grid">
+      <div class="purpose-photo reveal"><img src="images/purpose_seeding.jpg" alt="幾雙手一起在泥土裡播種"></div>
+      <div class="pillars">
+        <div class="pillar reveal"><h3>互相支援</h3><p>在種植的旅程中彼此扶持,分享經驗與技術。</p></div>
+        <div class="pillar reveal"><h3>分享成果</h3><p>將收成的喜悅與豐盛,傳遞給更多人。</p></div>
+        <div class="pillar reveal"><h3>關懷社群</h3><p>讓愛與溫暖在社區中流動延伸。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THREE AXES -->
+<section class="axes" id="axes">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">三</span><h2 class="sec-title">2026 年三大發展主軸</h2></div>
+    <p class="sec-lead reveal">三條主軸,從泥土、餐桌到知識,把一年的同行串成一條完整的路。</p>
+
+    <!-- axis 1 -->
+    <div class="axis-card reveal">
+      <div class="ac-img"><img src="images/mutual_planting.jpg" alt="一家人一起在後院種植"></div>
+      <div class="ac-body">
+        <div class="ac-tag">主軸一 · Mutual Gardening</div>
+        <h3>互助種植</h3>
+        <div class="ac-spirit">核心精神:你不是一個人在種</div>
+        <ul>
+          <li>組員輪流探訪彼此後院,幫手翻土、播種、移苗(transplant),特別支援新手或體力較弱的組員。</li>
+          <li>鼓勵「一起種同一樣植物」,例如同一季一起種番茄、南瓜或花卉,定期分享進度、成功與失敗。</li>
+        </ul>
+        <div class="ac-outcome"><b>預期成果:</b>技術自然流動、關係自然加深、種植不再孤單。</div>
+      </div>
+    </div>
+
+    <!-- axis 2 : farm to table -->
+    <div class="axis-card flip reveal">
+      <div class="ac-img"><img src="images/f2t_share.jpg" alt="一家人在戶外陽光下共餐"></div>
+      <div class="ac-body">
+        <div class="ac-tag">主軸二 · Farm to Table</div>
+        <h3>從土地到餐桌</h3>
+        <div class="ac-spirit">把成果變成記憶 —— 勞動轉化為喜悅與感恩</div>
+        <div class="f2t">
+          <div class="card"><img src="images/f2t_harvest.jpg" alt="後院收成的瓜果蔬菜"><div class="t"><h4>收成的喜悅</h4><p>把後院收成煮成共享的餐點,讓每一份收穫都成為珍貴的記憶。</p></div></div>
+          <div class="card"><img src="images/f2t_share.jpg" alt="戶外共享時光"><div class="t"><h4>共享的時光</h4><p>舉辦小型聚餐或戶外分享日,在陽光下一起品嚐勞動的果實。</p></div></div>
+          <div class="card"><img src="images/f2t_preserve.jpg" alt="醃漬保存的季節料理"><div class="t"><h4>傳承的味道</h4><p>分享食譜、保存方法與季節料理,建立屬於俱樂部獨特的味道與故事。</p></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- axis 3 -->
+    <div class="axis-card reveal">
+      <div class="ac-img"><img src="images/sharing_tools.jpg" alt="組員一起整理工具與分享經驗"></div>
+      <div class="ac-body">
+        <div class="ac-tag">主軸三 · Sharing &amp; Learning</div>
+        <h3>知識與資源共享</h3>
+        <div class="ac-spirit">核心精神:一起少走冤枉路</div>
+        <p style="margin-bottom:6px"><b style="color:var(--cream)">工具共享 ——</b> 種植工具、育苗盤、溫室設備互相借用,讓資源發揮最大效益。</p>
+        <ul>
+          <li>新手成功要點、種籽與育苗技巧</li>
+          <li>害蟲處理妙方、建立簡易溫室</li>
+          <li>種花 / 種瓜 / 種菜心得、土壤改良實戰經驗</li>
+        </ul>
+        <div class="ac-outcome">「鼓勵不完美分享 —— 分享失敗,勝過只展示成果」<br><b>預期成果:</b>降低挫敗感、形成集體智慧、建立互信互助的學習文化。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIVING BACK -->
+<section style="padding:0" id="give">
+  <div class="give-banner"><img src="images/givingback_banner.jpg" alt="社群一起舉辦義賣,彼此關懷"></div>
+  <div class="give-body">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">四</span><h2 class="sec-title">社群延伸與外展 · Giving Back</h2></div>
+      <p class="sec-lead reveal">社會關懷行動 —— 讓「後院」的祝福走出圍牆,成為社區的光與鹽。</p>
+      <div class="give-flow reveal">
+        <div class="give-step">
+          <div class="gi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l1-4h16l1 4M4 9v10h16V9M4 9h16"/></svg></div>
+          <h4>舉辦義賣</h4><p>出售或捐贈種植成果、加工食品或花卉,將收成化為祝福。</p>
+        </div>
+        <div class="give-step">
+          <div class="gi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 7v14M12 7S10 3 7.5 3 5 5.5 7 7M12 7s2-4 4.5-4S19 5.5 17 7"/></svg></div>
+          <h4>送贈成果</h4><p>把部分收成送到老人院、社福機構或有需要的社群。</p>
+        </div>
+        <div class="give-step">
+          <div class="gi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-9.5-9C1 9 2.5 5.5 6 5.5c2 0 3 1.5 3.5 2.5C10 7 11 5.5 13 5.5c3.5 0 5 3.5 3.5 6.5C19 16.5 12 21 12 21z"/></svg></div>
+          <h4>祝福延伸</h4><p>讓「後院」的祝福走出圍牆,成為社區的光與鹽。</p>
+        </div>
+      </div>
+      <div class="core-note reveal"><span class="lbl">核心意義</span><span>讓種植變成祝福的管道,教導我們收成不是只為自己,而是為了成為更多人的祝福。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="principles" id="principles">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">五</span><h2 class="sec-title">年度運作原則</h2></div>
+    <p class="sec-lead reveal">不寫成規則的默契 —— 我們之間最重要的三件事。</p>
+    <div class="prin-grid">
+      <div class="prin-photo reveal"><img src="images/principles_gather.jpg" alt="社群在後院圍坐聚會"></div>
+      <div class="prin-list">
+        <div class="prin reveal"><div class="pn">一</div><div><h4>不比較,只陪伴</h4><p>每個後院都有自己的節奏,我們不比誰種得更好,而是陪伴彼此在種植的路上成長。</p></div></div>
+        <div class="prin reveal"><div class="pn">二</div><div><h4>不求完美,但求真誠</h4><p>失敗的經驗同樣寶貴,真誠的分享比完美的成果更能建立深刻的連結。</p></div></div>
+        <div class="prin reveal"><div class="pn">三</div><div><h4>先照顧人,再照顧植物</h4><p>種植是媒介,人才是核心。我們先關心組員的需要,再一起關心土地的需要。</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEASONS -->
+<section class="seasons" id="seasons">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">七</span><h2 class="sec-title">2026 年度的四季行動</h2></div>
+    <p class="sec-lead reveal">一年四季,各有節奏 —— 由播種到休整,把同行落實在每一個月。</p>
+    <div class="season-grid">
+      <div class="season reveal">
+        <div class="s-img"><img src="images/season_spring.jpg" alt="春季社群一起播種準備"></div>
+        <div class="s-body">
+          <div class="s-tag">第一季 · 3–5 月</div><h4>春季:播種與準備</h4>
+          <ul>
+            <li><b>三月</b>春季啟動聚會 — 分享計劃、交換種籽</li>
+            <li><b>四月</b>集體育苗日 — 準備夏季作物幼苗</li>
+            <li><b>五月</b>後院互訪月 — 輪流協助翻土、施肥、移苗</li>
+          </ul>
+          <div class="s-foot">技術分享:育苗技巧、土壤改良、溫室搭建</div>
+        </div>
+      </div>
+      <div class="season reveal">
+        <div class="s-img"><img src="images/season_summer.jpg" alt="夏季花園成長照料"></div>
+        <div class="s-body">
+          <div class="s-tag">第二季 · 6–8 月</div><h4>夏季:成長與照料</h4>
+          <ul>
+            <li><b>六月</b>仲夏花園日 — 戶外聚會,分享進度</li>
+            <li><b>七月</b>害蟲防治工作坊 — 交流有機防治</li>
+            <li><b>八月</b>首次收成分享會 — 一起煮食</li>
+          </ul>
+          <div class="s-foot">重點行動:互相幫忙澆水、分享過剩收成</div>
+        </div>
+      </div>
+      <div class="season reveal">
+        <div class="s-img"><img src="images/season_autumn.jpg" alt="秋季豐收與感恩"></div>
+        <div class="s-body">
+          <div class="s-tag">第三季 · 9–11 月</div><h4>秋季:收成與感恩</h4>
+          <ul>
+            <li><b>九月</b>豐收感恩聚餐 — Farm to Table</li>
+            <li><b>十月</b>社區義賣 / 捐贈行動</li>
+            <li><b>十一月</b>秋季種植日 — 準備冬季作物</li>
+          </ul>
+          <div class="s-foot">經驗總結:記錄今年成功與失敗,為明年做準備</div>
+        </div>
+      </div>
+      <div class="season reveal">
+        <div class="s-img"><img src="images/season_winter.jpg" alt="冬季室內休整與學習"></div>
+        <div class="s-body">
+          <div class="s-tag">第四季 · 12–2 月</div><h4>冬季:休整與學習</h4>
+          <ul>
+            <li><b>十二月</b>年終回顧聚會 — 分享照片、感恩時刻</li>
+            <li><b>一月</b>冬季學習月 — 室內工作坊</li>
+            <li><b>二月</b>種籽交換會 — 討論 2027 種植計劃</li>
+          </ul>
+          <div class="s-foot">準備工作:修整工具、改良土壤、訂購種籽</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-note reveal"><span class="lbl">彈性原則</span><span>所有活動以組員實際需要與時間為主,不強求出席,重質不重量。每季至少一次實體聚會,其他可透過 WhatsApp 群組保持聯繫與分享。</span></div>
+  </div>
+</section>
+
+<!-- VISION / CLOSING -->
+<section class="vision" id="vision">
+  <div class="vision-bg"><img src="images/vision_banner.jpg" alt="社群在花園中共耕與共餐"></div>
+  <div class="vision-inner">
+    <div class="eyebrow">六、2026 年我們想看到的畫面</div>
+    <blockquote>「我不只學會種東西,<br>我也在這裡<span class="hl">被滋養過</span>。」</blockquote>
+    <p class="v-body">這是一個關於成長的故事 —— 不只是植物的成長,更是人心的成長。在韭菜俱樂部,我們一起播種、一起澆灌、一起收成,也一起在彼此的生命中留下溫暖的印記。</p>
+    <p class="v-call">讓我們攜手同行,在 2026 年寫下屬於我們的故事,<br>讓每一個後院都成為愛與盼望的源頭。</p>
+    <p class="verse">「凡你手所當作的事,要盡力去作。」 — 傳道書 9:10</p>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><svg class="leaf" viewBox="0 0 24 24" fill="none"><path d="M4 20c0-8 6-13 16-14-1 9-6 14-14 14H4z" fill="#7A9E5A"/></svg> 韭菜俱樂部</div>
+  <div>2026 年度發展計劃 · 互相支援 · 分享成果 · 關懷社群</div>
+  <div class="small">A Southampton community gardening initiative · Made with 🌱</div>
+</footer>
+
+<script>
+  // nav solid on scroll
+  const nav=document.getElementById('nav');
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // growth axis + nav
+  const grow=document.getElementById('axisGrow'), seed=document.getElementById('axisSeed');
+  function onScroll(){
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    const p=Math.min(1,Math.max(0,window.scrollY/h));
+    const vh=window.innerHeight;
+    grow.style.height=(p*vh)+'px';   // grows within viewport-fixed track
+    seed.style.top=(p*(vh-14)+7)+'px';
+    nav.classList.toggle('solid',window.scrollY>60);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+</script>
+</body>
+</html>
